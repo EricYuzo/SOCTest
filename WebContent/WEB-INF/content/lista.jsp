@@ -27,6 +27,7 @@ th, td {
       <th>Setor</th>
       <th>Cargo</th>
       <th>Médico</th>
+      <th>Resultado</th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +39,7 @@ th, td {
         <td>${exame.participante.setor}</td>
         <td>${exame.participante.cargo}</td>
         <td>${exame.medico}</td>
+        <td>${exame.resultado}</td>
       </tr>
     </c:forEach>
   </tbody>
