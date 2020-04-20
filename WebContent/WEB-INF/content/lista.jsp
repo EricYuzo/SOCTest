@@ -16,7 +16,8 @@ th, td {
 </style>
 </head>
 <body>
-  <h1>Todos os Exames</h1>
+  <h1>Exames Ocupacionais</h1>
+  <h2>Todos os exames</h2>
   <table class="lista-exames">
   <thead>
     <tr>
