@@ -17,6 +17,7 @@ th, td {
 </head>
 <body>
   <h1>Exames Ocupacionais</h1>
+  <a href="novo">Novo Exame</a>
   <h2>Todos os exames</h2>
   <table class="lista-exames">
   <thead>
