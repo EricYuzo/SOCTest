@@ -1,10 +1,12 @@
 package br.com.soc.test.jdbc;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.soc.test.modelo.Empresa;
@@ -21,6 +23,26 @@ public class ExameDao {
 	
 	public ExameDao() {
 		connection = new ConnectionFactory().getConnection();
+	}
+	
+	public void insere(Exame exame) {
+		try {
+			String sql =
+					"INSERT INTO TB_EXAME (DT_EXAME, ID_FINALIDADE, ID_RESULTADO, ID_MEDICO, ID_EMPRESA_FUNCIONARIO) " +
+					"VALUES (?, ?, ?, ?, ?)";
+
+			PreparedStatement st = connection.prepareStatement(sql);
+			st.setDate(1, new Date(Calendar.getInstance().getTimeInMillis()));
+			st.setInt(2, exame.getFinalidade().getId());
+			st.setInt(3, exame.getResultado().getId());
+			st.setInt(4, exame.getMedico().getId());
+			st.setInt(5, exame.getParticipante().getId());
+			
+			st.execute();
+			st.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public List<Exame> listaTodos() {
