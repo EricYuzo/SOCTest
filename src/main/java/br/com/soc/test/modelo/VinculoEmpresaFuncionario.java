@@ -2,11 +2,20 @@ package br.com.soc.test.modelo;
 
 public class VinculoEmpresaFuncionario {
 
+	private Integer id;
 	private Empresa empresa;
 	private Funcionario funcionario;
 	private String setor;
 	private String cargo;
 	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public Empresa getEmpresa() {
 		return empresa;
 	}
@@ -43,9 +52,7 @@ public class VinculoEmpresaFuncionario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
-		result = prime * result + ((empresa == null) ? 0 : empresa.hashCode());
-		result = prime * result + ((funcionario == null) ? 0 : funcionario.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((setor == null) ? 0 : setor.hashCode());
 		return result;
 	}
@@ -59,20 +66,10 @@ public class VinculoEmpresaFuncionario {
 		if (getClass() != obj.getClass())
 			return false;
 		VinculoEmpresaFuncionario other = (VinculoEmpresaFuncionario) obj;
-		if (cargo == null) {
-			if (other.cargo != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!cargo.equals(other.cargo))
-			return false;
-		if (empresa == null) {
-			if (other.empresa != null)
-				return false;
-		} else if (!empresa.equals(other.empresa))
-			return false;
-		if (funcionario == null) {
-			if (other.funcionario != null)
-				return false;
-		} else if (!funcionario.equals(other.funcionario))
+		} else if (!id.equals(other.id))
 			return false;
 		if (setor == null) {
 			if (other.setor != null)
@@ -81,6 +78,9 @@ public class VinculoEmpresaFuncionario {
 			return false;
 		return true;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return String.format("%s - %s na %s", getFuncionario(), getCargo(), getEmpresa());
+	}
 }
