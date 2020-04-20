@@ -12,6 +12,7 @@ import br.com.soc.test.modelo.Exame;
 import br.com.soc.test.modelo.Finalidade;
 import br.com.soc.test.modelo.Funcionario;
 import br.com.soc.test.modelo.Medico;
+import br.com.soc.test.modelo.Resultado;
 import br.com.soc.test.modelo.VinculoEmpresaFuncionario;
 
 public class ExameDao {
@@ -30,7 +31,8 @@ public class ExameDao {
 					"SELECT EXM.ID_EXAME, EXM.DT_EXAME, EMP.ID_EMPRESA, EMP.NM_EMPRESA, EMP.CD_CNPJ " +
 					"      ,FUN.ID_FUNCIONARIO, FUN.NM_FUNCIONARIO, FUN.CD_CPF, FUN.CD_RG, FUN.CD_EMISSOR_RG " +
 					"      ,VEF.NM_SETOR, VEF.NM_CARGO, MED.ID_MEDICO, MED.NM_MEDICO, MED.CD_CRM " +
-					"      ,MED.SG_UF SG_UF_CRM, MED.NM_TITULO NM_TITULO_MEDICO, FIN.ID_FINALIDADE, FIN.NM_FINALIDADE " +
+					"      ,MED.SG_UF SG_UF_CRM, MED.NM_TITULO NM_TITULO_MEDICO " +
+					"      ,FIN.ID_FINALIDADE, FIN.NM_FINALIDADE, RES.ID_RESULTADO, RES.NM_RESULTADO " +
 					"FROM TB_EXAME EXM " +
 					"  JOIN TB_EMPRESA_FUNCIONARIO VEF " +
 					"    ON VEF.ID_EMPRESA = EXM.ID_EMPRESA AND VEF.ID_FUNCIONARIO = EXM.ID_FUNCIONARIO " +
@@ -42,7 +44,8 @@ public class ExameDao {
 					"    ON MED.ID_MEDICO = EXM.ID_MEDICO " +
 					"  JOIN TB_FINALIDADE FIN " +
 					"    ON FIN.ID_FINALIDADE = EXM.ID_FINALIDADE " +
-					"WHERE EXM.IN_ATIVO = 1;";
+					"  JOIN TB_RESULTADO RES " +
+					"    ON RES.ID_RESULTADO = EXM.ID_RESULTADO;";
 			
 			PreparedStatement st = connection.prepareStatement(sql);
 			
@@ -77,12 +80,17 @@ public class ExameDao {
 				Finalidade finalidade = new Finalidade();
 				finalidade.setId(rs.getInt("ID_FINALIDADE"));
 				finalidade.setNome(rs.getString("NM_FINALIDADE"));
+				
+				Resultado resultado = new Resultado();
+				resultado.setId(rs.getInt("ID_RESULTADO"));
+				resultado.setNome(rs.getString("NM_RESULTADO"));
 	
 				Exame exame = new Exame();
 				exame.setId(rs.getInt("ID_EXAME"));
 				exame.setParticipante(participante);
 				exame.setMedico(medico);
 				exame.setFinalidade(finalidade);
+				exame.setResultado(resultado);
 
 				exames.add(exame);
 			}
