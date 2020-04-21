@@ -11,6 +11,10 @@ public class Exame {
 	private VinculoEmpresaFuncionario participante;
 	private Medico medico;
 
+	public Exame() {
+		data = Calendar.getInstance();
+	}
+
 	public Integer getId() {
 		return id;
 	}
