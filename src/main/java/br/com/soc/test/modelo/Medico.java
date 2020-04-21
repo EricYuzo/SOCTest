@@ -1,52 +1,52 @@
 package br.com.soc.test.modelo;
 
 public class Medico {
-	
+
 	private Integer id;
 	private String nome;
 	private String crm;
 	private String uf;
 	private String titulo;
-	
+
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getCrm() {
 		return crm;
 	}
 	public void setCrm(String crm) {
 		this.crm = crm;
 	}
-	
+
 	public String getUf() {
 		return uf;
 	}
-	
+
 	public void setUf(String uf) {
 		this.uf = uf;
 	}
-	
+
 	public String getTitulo() {
 		return titulo;
 	}
-	
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
 	public String getCrmCompleto() {
 		return getCrm() + " / " + getUf();
 	}
@@ -75,7 +75,7 @@ public class Medico {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format("%s %s (%s)", getTitulo(), getNome(), getCrmCompleto());

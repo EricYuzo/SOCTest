@@ -1,36 +1,40 @@
 package br.com.soc.test.modelo;
 
 public class Empresa {
-	
+
 	private Integer id;
 	private String nome;
 	private String cnpj;
-	
+
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getCnpj() {
 		return cnpj;
 	}
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
+
 	public String getCnpjFormatado() {
-		return cnpj.substring(0, 2) + "." + cnpj.substring(2, 5) + "." + cnpj.substring(5, 8) + "/" + cnpj.substring(8, 12) + "-" + cnpj.substring(12, 14);
+		return cnpj.substring(0, 2) +
+				"." + cnpj.substring(2, 5) +
+				"." + cnpj.substring(5, 8) +
+				"/" + cnpj.substring(8, 12) +
+				"-" + cnpj.substring(12, 14);
 	}
 
 	@Override
@@ -57,7 +61,7 @@ public class Empresa {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return getNome();
