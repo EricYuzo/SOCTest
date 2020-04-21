@@ -29,7 +29,7 @@ th, td {
       <th>Cargo</th>
       <th>Médico</th>
       <th>Resultado</th>
-      <th><th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
