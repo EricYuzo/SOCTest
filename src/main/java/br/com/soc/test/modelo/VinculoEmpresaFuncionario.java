@@ -7,7 +7,7 @@ public class VinculoEmpresaFuncionario {
 	private Funcionario funcionario;
 	private String setor;
 	private String cargo;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -19,31 +19,31 @@ public class VinculoEmpresaFuncionario {
 	public Empresa getEmpresa() {
 		return empresa;
 	}
-	
+
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	
+
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}
-	
+
 	public void setFuncionario(Funcionario funcionario) {
 		this.funcionario = funcionario;
 	}
-	
+
 	public String getSetor() {
 		return setor;
 	}
-	
+
 	public void setSetor(String setor) {
 		this.setor = setor;
 	}
-	
+
 	public String getCargo() {
 		return cargo;
 	}
-	
+
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
@@ -53,7 +53,6 @@ public class VinculoEmpresaFuncionario {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((setor == null) ? 0 : setor.hashCode());
 		return result;
 	}
 
@@ -71,16 +70,11 @@ public class VinculoEmpresaFuncionario {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (setor == null) {
-			if (other.setor != null)
-				return false;
-		} else if (!setor.equals(other.setor))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("%s - %s na %s", getFuncionario(), getCargo(), getEmpresa());
+		return String.format("%s, %s na %s", getFuncionario(), getCargo(), getEmpresa());
 	}
 }
