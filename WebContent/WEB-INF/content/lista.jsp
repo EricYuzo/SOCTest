@@ -29,6 +29,7 @@ th, td {
       <th>Cargo</th>
       <th>Médico</th>
       <th>Resultado</th>
+      <th><th>
     </tr>
   </thead>
   <tbody>
@@ -41,6 +42,7 @@ th, td {
         <td>${exame.participante.cargo}</td>
         <td>${exame.medico}</td>
         <td>${exame.resultado}</td>
+        <td><a href=excluiExame?exame.id=${exame.id}>Excluir</a></td>
       </tr>
     </c:forEach>
   </tbody>
