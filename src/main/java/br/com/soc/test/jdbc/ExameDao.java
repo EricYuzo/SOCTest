@@ -104,10 +104,10 @@ public class ExameDao {
 		}
 	}
 
-	public void exclui(VinculoEmpresaFuncionario participante) {
+	public void exclui(Exame exame) {
 		String sql = SQL_DELETE;
 		try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-			stmt.setInt(1, participante.getId());
+			stmt.setInt(1, exame.getId());
 
 			stmt.execute();
 		} catch (SQLException e) {
