@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.soc.test.modelo.Empresa;
@@ -46,7 +47,8 @@ public class ExameDao {
 			"    ON FIN.ID_FINALIDADE = EXM.ID_FINALIDADE " +
 			"  JOIN TB_RESULTADO RES " +
 			"    ON RES.ID_RESULTADO = EXM.ID_RESULTADO " +
-			"WHERE EXM.ID_EXAME = ?;";
+			"WHERE EXM.ID_EXAME = ? " +
+			"ORDER BY EXM.ID_EXAME;";
 	private static final String SQL_FIND_ALL =
 			"SELECT EXM.ID_EXAME, EXM.DT_EXAME, EMP.ID_EMPRESA, EMP.NM_EMPRESA, EMP.CD_CNPJ " +
 			"      ,FUN.ID_FUNCIONARIO, FUN.NM_FUNCIONARIO, FUN.CD_CPF, FUN.CD_RG, FUN.CD_EMISSOR_RG " +
@@ -65,7 +67,8 @@ public class ExameDao {
 			"  JOIN TB_FINALIDADE FIN " +
 			"    ON FIN.ID_FINALIDADE = EXM.ID_FINALIDADE " +
 			"  JOIN TB_RESULTADO RES " +
-			"    ON RES.ID_RESULTADO = EXM.ID_RESULTADO;";
+			"    ON RES.ID_RESULTADO = EXM.ID_RESULTADO " +
+			"ORDER BY EXM.ID_EXAME;";
 
 	private Connection connection;
 
@@ -164,6 +167,10 @@ public class ExameDao {
 					exame.setMedico(medico);
 					exame.setFinalidade(finalidade);
 					exame.setResultado(resultado);
+
+					Calendar data = Calendar.getInstance();
+					data.setTime(rs.getTimestamp("DT_EXAME"));
+					exame.setData(data);
 				}
 			}
 		} catch (SQLException e) {
@@ -219,6 +226,10 @@ public class ExameDao {
 				exame.setMedico(medico);
 				exame.setFinalidade(finalidade);
 				exame.setResultado(resultado);
+
+				Calendar data = Calendar.getInstance();
+				data.setTime(rs.getTimestamp("DT_EXAME"));
+				exame.setData(data);
 
 				exames.add(exame);
 			}
